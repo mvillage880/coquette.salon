@@ -29,10 +29,11 @@
 </script>
 
 <TabGroup class="mt-16 sm:mt-24">
-  <TabList class="-mx-8 grid grid-cols-3 font-extrabold sm:mx-0">
-    <Tab>モーニング</Tab>
-    <Tab>ランチ</Tab>
-    <Tab>ディナー</Tab>
+  <TabList class="-mx-8 grid grid-cols-4 font-extrabold sm:mx-0">
+    <Tab>カット</Tab>
+    <Tab>カラー</Tab>
+    <Tab>パーマ</Tab>
+    <Tab>その他</Tab>
   </TabList>
   <TabPanels class="mt-10 sm:mt-16 sm:px-5 lg:mt-20 lg:px-10">
     <TabPanel class="space-y-10">

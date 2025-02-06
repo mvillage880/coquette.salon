@@ -6,5 +6,5 @@ export type Menu = {
   description: string;
   image: MicroCMSImage;
   kind: ["ドリンク" | "フード" | "デザート"];
-  times: ("モーニング" | "ランチ" | "ディナー")[];
+  times: ("カット" | "カラー" | "パーマ" | "その他")[];
 };
