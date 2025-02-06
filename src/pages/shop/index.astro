@@ -22,21 +22,38 @@ import UnderPageLayout from "@layouts/UnderPageLayout.astro";
     class="mt-10 lg:mt-16 [&_dt:not(:first-child)]:mt-5 [&_dt]:text-lg [&_dt]:font-extrabold"
   >
     <dt>住所:</dt>
-    <dd>〒123-4567<br />東京都かけそら市3-20-1</dd>
+    <dd>
+      〒156-0052<br />東京都世田谷区経堂１-6-10
+      HISAWAビル202（小田急線経堂駅徒歩3分）
+    </dd>
     <dt>営業時間:</dt>
-    <dd>月曜日 - 金曜日: 8:00 - 22:00<br />土曜日 - 日曜日: 10:00 - 20:00</dd>
+    <dd>
+      平日: 10:00 - 17:00（カット最終受付16:00）<br />土日: 9:00 -
+      17:00（カット最終受付16:00）
+    </dd>
+    <dt>定休日:</dt>
+    <dd>月曜日・火曜日</dd>
     <dt>アクセス:</dt>
     <dd>
-      かけそら駅から徒歩5分。緑豊かな公園の隣に位置し、静寂と落ち着きを感じることができます。
+      小田急線経堂駅南口を出て目の前の道なりをまっすぐお進みください。左手のスパイスワラを過ぎると郵便ポストがございます。ポストの奥隣に階段がございますので、お上がりいただければCoquetteがございます。
+      <div class="mt-5 lg:mt-10">
+        <Picture
+          src={import("@images/shop/map.png")}
+          widths={[320, 640, 960, 1280, 1920]}
+          aspectRatio={1920 / 1280}
+          width={640}
+          height={455}
+          sizes="60vw"
+          alt=""
+        />
+      </div>
     </dd>
-    <dt>コンセプト:</dt>
-    <dd>
-      RelaxCafeは、「日常に彩りを添える、あなたのお気に入りの場所」をコンセプトに、新鮮な食材を使用した美味しい飲食メニューと、心地よい音楽、暖かな雰囲気を提供しています。ソファー席からは公園の緑が見え、落ち着いた時間を過ごすことができます。
-    </dd>
+    <dt>支払い方法:</dt>
+    <dd>Visa／Mastercard／JCB／American Express／UC</dd>
     <dt>連絡先:</dt>
     <dd>
       Tel:
-      <a class="underline" href="tel:+03-1234-5678">03-1234-5678</a>
+      <a class="underline" href="tel:+03-3439-7778">03-3439-7778</a>
       <br />Email:
       <a class="underline" href="mailto:info@relaxcafe.sample.com">
         info@relaxcafe.com

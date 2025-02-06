@@ -38,6 +38,7 @@ module.exports = {
       colors: {
         main: "#2B1205",
         secondary: "#1F0C02",
+        customBlue: '#007BFF',
       },
       fontFamily: {
         serif: ["Shippori Mincho", "serif"],

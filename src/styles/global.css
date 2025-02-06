@@ -5,3 +5,11 @@
 img {
   @apply w-full;
 }
+
+.text-main {
+  color: rgb(40, 42, 38);
+}
+
+.bg-secondary\/90 {
+  background-color: rgb(40 42 38 / 0.9);
+}
