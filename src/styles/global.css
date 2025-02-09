@@ -6,10 +6,27 @@ img {
   @apply w-full;
 }
 
+.font-serif {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 .text-main {
   color: rgb(40, 42, 38);
 }
 
 .bg-secondary\/90 {
   background-color: rgb(40 42 38 / 0.9);
+}
+
+.bbccc {
+  border-bottom: 1px solid #ccc;
+}
+.pb05 {
+  padding-bottom: 0.5em;
+}
+
+.w-10rem {
+  width: 10rem;
 }

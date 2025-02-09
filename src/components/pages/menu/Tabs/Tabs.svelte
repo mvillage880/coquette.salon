@@ -10,46 +10,52 @@
   import type { Menu } from "src/types/microcms/menu";
 
   export let menu: {
-    morning: {
-      drink: Pick<Menu, "name" | "price" | "description" | "image">[];
-      food: Pick<Menu, "name" | "price" | "description" | "image">[];
-      desert: Pick<Menu, "name" | "price" | "description" | "image">[];
-    };
-    lunch: {
-      drink: Pick<Menu, "name" | "price" | "description" | "image">[];
-      food: Pick<Menu, "name" | "price" | "description" | "image">[];
-      desert: Pick<Menu, "name" | "price" | "description" | "image">[];
-    };
-    dinner: {
-      drink: Pick<Menu, "name" | "price" | "description" | "image">[];
-      food: Pick<Menu, "name" | "price" | "description" | "image">[];
-      desert: Pick<Menu, "name" | "price" | "description" | "image">[];
-    };
+    cut: Pick<Menu, "name" | "price" | "description">[];
+    color: Pick<Menu, "name" | "price" | "description">[];
+    perm: Pick<Menu, "name" | "price" | "description">[];
+    straight: Pick<Menu, "name" | "price" | "description">[];
+    treatment: Pick<Menu, "name" | "price" | "description">[];
+    hairset: Pick<Menu, "name" | "price" | "description">[];
+    headspa: Pick<Menu, "name" | "price" | "description">[];
+    others: Pick<Menu, "name" | "price" | "description">[];
   };
 </script>
 
 <TabGroup class="mt-16 sm:mt-24">
-  <TabList class="-mx-8 grid grid-cols-4 font-extrabold sm:mx-0">
+  <TabList class="-mx-8 grid grid-cols-3 font-extrabold sm:mx-0">
     <Tab>カット</Tab>
     <Tab>カラー</Tab>
     <Tab>パーマ</Tab>
+    <Tab>縮毛矯正</Tab>
+    <Tab>トリートメント</Tab>
+    <Tab>ヘアセット</Tab>
+    <Tab>ヘッドスパ</Tab>
     <Tab>その他</Tab>
   </TabList>
   <TabPanels class="mt-10 sm:mt-16 sm:px-5 lg:mt-20 lg:px-10">
     <TabPanel class="space-y-10">
-      <Section title="ドリンク" items={menu.morning.drink} />
-      <Section title="フード" items={menu.morning.food} />
-      <Section title="デザート" items={menu.morning.desert} />
+      <Section items={menu.cut} />
     </TabPanel>
     <TabPanel class="space-y-10">
-      <Section title="ドリンク" items={menu.lunch.drink} />
-      <Section title="フード" items={menu.lunch.food} />
-      <Section title="デザート" items={menu.lunch.desert} />
+      <Section items={menu.color} />
     </TabPanel>
     <TabPanel class="space-y-10">
-      <Section title="ドリンク" items={menu.dinner.drink} />
-      <Section title="フード" items={menu.dinner.food} />
-      <Section title="デザート" items={menu.dinner.desert} />
+      <Section items={menu.perm} />
+    </TabPanel>
+    <TabPanel class="space-y-10">
+      <Section items={menu.straight} />
+    </TabPanel>
+    <TabPanel class="space-y-10">
+      <Section items={menu.treatment} />
+    </TabPanel>
+    <TabPanel class="space-y-10">
+      <Section items={menu.hairset} />
+    </TabPanel>
+    <TabPanel class="space-y-10">
+      <Section items={menu.headspa} />
+    </TabPanel>
+    <TabPanel class="space-y-10">
+      <Section items={menu.others} />
     </TabPanel>
   </TabPanels>
 </TabGroup>
