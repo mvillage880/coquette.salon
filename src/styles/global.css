@@ -23,8 +23,8 @@ img {
 .bbccc {
   border-bottom: 1px solid #ccc;
 }
-.pb05 {
-  padding-bottom: 0.5em;
+.pb125 {
+  padding-bottom: 1.25em;
 }
 
 .w-8rem {
@@ -51,6 +51,16 @@ img {
 }
 
 .bg-main {
+  --tw-bg-opacity: 1;
+  background-color: rgb(40 42 38 / var(--tw-bg-opacity));
+}
+
+.bg-cta {
+  --tw-bg-opacity: 1;
+  background-color: rgb(32 102 89 / var(--tw-bg-opacity));
+}
+
+.aria-selected\:bg-secondary[aria-selected="true"] {
   --tw-bg-opacity: 1;
   background-color: rgb(40 42 38 / var(--tw-bg-opacity));
 }

@@ -23,14 +23,14 @@
 
 <TabGroup class="mt-16 sm:mt-24">
   <TabList class="-mx-8 grid grid-cols-3 font-extrabold sm:mx-0">
-    <Tab>カット</Tab>
-    <Tab>カラー</Tab>
-    <Tab>パーマ</Tab>
-    <Tab>縮毛矯正</Tab>
-    <Tab>トリートメント</Tab>
-    <Tab>ヘアセット</Tab>
-    <Tab>ヘッドスパ</Tab>
-    <Tab>その他</Tab>
+    <Tab>CUT</Tab>
+    <Tab>COLOR</Tab>
+    <Tab>PERM</Tab>
+    <Tab>STRAIGHT</Tab>
+    <Tab>TREATMENT</Tab>
+    <Tab>HAIR SET</Tab>
+    <Tab>HEAD SPA</Tab>
+    <Tab>OTHERS</Tab>
   </TabList>
   <TabPanels class="mt-10 sm:mt-16 sm:px-5 lg:mt-20 lg:px-10">
     <TabPanel class="space-y-10">

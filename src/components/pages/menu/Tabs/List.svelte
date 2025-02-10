@@ -5,12 +5,12 @@
   export let items: Pick<Menu, "name" | "price" | "description">[] = [];
 </script>
 
-<ul class="space-y-10 px-2">
+<ul class="space-y-5 px-2">
   {#each items as item}
-    <li class="bbccc pb05">
+    <li class="bbccc pb125">
       <div class="flex items-end justify-between">
-        <div>{item.name}</div>
-        <div>￥{item.price}</div>
+        <div class="font-extrabold">{item.name}</div>
+        <div class="font-extrabold">￥{item.price}</div>
       </div>
       <div class="text-sm">{item.description}</div>
       <!--div class="mt-4 max-w-[15rem]">
