@@ -37,11 +37,11 @@
       subLabel: "ギャラリー",
       href: "/gallery",
     },
-    {
+    /*{
       mainLabel: "CONTACT",
       subLabel: "お問い合わせ",
       href: "/contact",
-    },
+    },*/
   ];
 
   // 開閉ボタンがメニューに重なっている都合上、

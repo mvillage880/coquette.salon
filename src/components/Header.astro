@@ -41,16 +41,33 @@ import { Image } from "@astrojs/image/components";
   </a>
 
   <div
-    class="flex w-1/2 items-center justify-between sm:pr-40 md:pr-40 lg:pr-40 xl:pr-40"
+    class="hidden w-1/2 items-center justify-between sm:flex sm:pr-40 md:pr-40 lg:pr-40 xl:pr-40"
   >
     <div class="flex-grow"></div>
+    <!--div
+    class="fixed inset-x-0 bottom-0 z-10 flex hidden h-16 w-full items-center justify-center"
+  -->
     <button
-      class="w-8rem group relative mr-5 flex h-12 items-center justify-center border border-current font-english text-sm shadow-black/60 transition-shadow duration-[0.4s] sm:hover:shadow-[8px_8px_0_var(--tw-shadow-color)] lg:h-16 lg:text-base"
+      class="w-10rem group relative mr-5 flex h-12 items-center justify-center border border-current font-english text-sm shadow-black/60 transition-shadow duration-[0.4s] sm:hover:shadow-[8px_8px_0_var(--tw-shadow-color)] lg:h-16 lg:text-base"
     >
       <a
         href="https://beauty.hotpepper.jp/slnH000357592/"
         target="_blank"
-        rel="noopener noreferrer">RESERVE</a
+        rel="noopener noreferrer">Reserve</a
+      >
+    </button>
+  </div>
+
+  <div
+    class="fixed inset-x-0 bottom-0 z-10 flex h-16 w-full items-center justify-end sm:hidden"
+  >
+    <button
+      class="group relative flex h-14 w-1/2 items-center justify-center border-current bg-main font-english text-sm text-white shadow-black/60 transition-shadow duration-[0.4s] sm:hover:shadow-[8px_8px_0_var(--tw-shadow-color)] lg:h-16 lg:text-base"
+    >
+      <a
+        href="https://beauty.hotpepper.jp/slnH000357592/"
+        target="_blank"
+        rel="noopener noreferrer">Hotpepper Beautyから予約</a
       >
     </button>
   </div>
