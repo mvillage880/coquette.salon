@@ -63,7 +63,8 @@
   static
 >
   <nav class="h-full">
-    <ul class="flex h-full flex-col justify-center gap-6 py-16">
+    <!--ul class="flex h-full flex-col justify-center gap-6 py-16"-->
+    <ul class="flex h-full flex-col justify-center py-16">
       {#each links as link}
         <li
           class="flex justify-center [&.hidden-desktop]:sm:hidden"
