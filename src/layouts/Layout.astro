@@ -16,10 +16,10 @@ export interface Props {
 
 const props = Astro.props;
 
-const BASE_TITLE = "RELAX CAFE";
+const BASE_TITLE = "美容室Coquette - コケット";
 const title = props.title ? `${props.title} | ${BASE_TITLE}` : BASE_TITLE;
 const BASE_DESCRIPTION =
-  "心地よい空間でくつろぎながら、美味しいコーヒーと軽食をお楽しみいただけるRELAX CAFEへようこそ。";
+  "大人女性の疲れを癒すプライベートサロン。美容室Coquette(コケット)へようこそ！";
 const description = props.description ?? BASE_DESCRIPTION;
 ---
 
@@ -69,11 +69,5 @@ const description = props.description ?? BASE_DESCRIPTION;
     <script>
       import "@global/smallDevice";
     </script>
-
-    <style>
-      .text-custom {
-        color: #007bff;
-      }
-    </style>
   </body>
 </html>
