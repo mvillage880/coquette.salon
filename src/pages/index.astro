@@ -57,10 +57,10 @@ const { contents: news } = await client.getList<News>({
   <section
     class="relative mt-20 sm:mr-10 sm:mt-28 sm:flex md:mt-28 lg:mr-24 lg:mt-32 xl:mr-40 xl:mt-40 2xl:mt-52"
   >
-    <div class="sm:relative sm:z-10 sm:flex-1">
+    <div class="animate sm:relative sm:z-10 sm:flex-1">
       <TextImage
         {...aboutTextImage}
-        class="animate ml-6 w-[12.5rem] origin-bottom-left scale-75 drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] sm:ml-10 md:ml-14 md:scale-90 lg:ml-28 lg:scale-100 xl:ml-44"
+        class="ml-6 w-[12.5rem] origin-bottom-left scale-75 drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] sm:ml-10 md:ml-14 md:scale-90 lg:ml-28 lg:scale-100 xl:ml-44"
         alt=""
       />
       <h2
@@ -97,10 +97,12 @@ const { contents: news } = await client.getList<News>({
   <section
     class="animate relative mt-20 sm:ml-10 sm:mt-20 sm:flex md:mt-28 lg:ml-28 lg:mt-32 xl:ml-44 xl:mt-40 2xl:mt-52"
   >
-    <div class="sm:relative sm:z-10 sm:order-2 sm:-mt-10 sm:flex-1 md:-mt-2">
+    <div
+      class="animate sm:relative sm:z-10 sm:order-2 sm:-mt-10 sm:flex-1 md:-mt-2"
+    >
       <TextImage
         {...servicesTextImage}
-        class="animate ml-6 w-[16.625rem] origin-bottom-left scale-75 drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] sm:ml-10 md:scale-100 lg:ml-16"
+        class="ml-6 w-[16.625rem] origin-bottom-left scale-75 drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] sm:ml-10 md:scale-100 lg:ml-16"
         alt=""
       />
       <h2
