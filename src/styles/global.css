@@ -6,6 +6,10 @@ img {
   @apply w-full;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .font-serif {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -63,4 +67,28 @@ img {
 .aria-selected\:bg-secondary[aria-selected="true"] {
   --tw-bg-opacity: 1;
   background-color: rgb(40 42 38 / var(--tw-bg-opacity));
+}
+
+/* アニメーション前の初期状態 */
+.animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* スクロール時に発火するアニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* .show クラスが付与されたらアニメーション適用 */
+.animate.show {
+  animation: fadeInUp 1s ease-out forwards;
 }

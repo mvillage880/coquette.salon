@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MicroCMSPicture from "@components/MicroCMSPicture.svelte";
+  /*import MicroCMSPicture from "@components/MicroCMSPicture.svelte";*/
   import type { Menu } from "src/types/microcms/menu";
 
   export let items: Pick<Menu, "name" | "price" | "description">[] = [];

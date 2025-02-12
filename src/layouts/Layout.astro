@@ -3,10 +3,20 @@ import "@styles/global.css";
 
 import { SEO } from "astro-seo";
 
+/*import "@components/ScrollAnimation.svelte";*/
+
 import Menu from "@components/Menu/Menu.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import GA4 from "@components/GA4.astro";
+
+/*
+import { scrollAnimation } from "../utils/scroll-animation";
+import { onMount } from "solid-js";
+
+onMount(() => {
+  scrollAnimation();
+});*/
 
 export interface Props {
   title?: string;
@@ -23,51 +33,70 @@ const BASE_DESCRIPTION =
 const description = props.description ?? BASE_DESCRIPTION;
 ---
 
-<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <SEO
-      title={title}
-      description={description}
-      noindex={props.noindex ?? false}
-      charset="UTF-8"
-      openGraph={{
-        basic: {
-          title,
-          type: "website",
-          image: `${import.meta.env.PUBLIC_SITE_URL}/og.png`,
-        },
-      }}
-      extend={{
-        link: [{ rel: "icon", href: "/favicon.ico" }],
+  <SEO
+    title={title}
+    description={description}
+    noindex={props.noindex ?? false}
+    charset="UTF-8"
+    openGraph={{
+      basic: {
+        title,
+        type: "website",
+        image: `${import.meta.env.PUBLIC_SITE_URL}/og.png`,
+      },
+    }}
+    extend={{
+      link: [{ rel: "icon", href: "/favicon.ico" }],
 
-        meta: [
-          { name: "viewport", content: "width=device-width" },
-          { name: "twitter:card", content: "summary_large_image" },
-        ],
-      }}
-    />
+      meta: [
+        { name: "viewport", content: "width=device-width" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+    }}
+  />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;800&family=Shippori+Mincho:wght@500;800&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;800&family=Shippori+Mincho:wght@500;800&display=swap"
+    rel="stylesheet"
+  />
 
-    {import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID && <GA4 />}
-  </head>
-  <body class="font-serif leading-loose text-main">
+  {import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID && <GA4 />}
+
+  <body data-scroll class="font-serif leading-loose text-main">
     <Header />
+    <!--ScrollAnimation-->
     <main class="mt-32 overflow-x-hidden sm:mt-40">
       <slot />
     </main>
+    <!--/ScrollAnimation-->
     <Footer />
 
     <Menu />
 
     <script>
       import "@global/smallDevice";
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show"); // ✅ `.show` を付与
+                observer.unobserve(entry.target); // ✅ 1回だけ発火
+              }
+            });
+          },
+          { rootMargin: "0px", threshold: 0.3 }
+        );
+
+        document
+          .querySelectorAll(".animate")
+          .forEach((el) => observer.observe(el));
+      });
     </script>
   </body>
 </html>
