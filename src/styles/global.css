@@ -90,5 +90,5 @@ html {
 
 /* .show クラスが付与されたらアニメーション適用 */
 .animate.show {
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
 }
