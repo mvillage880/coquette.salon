@@ -54,24 +54,54 @@
     }
   });
 
-  // **ページ内リンク & 別ページ遷移に対応**
+  // **アンカーリンク & 別ページ遷移に対応**
   function handleLinkClick(event, href) {
     if (href.startsWith("/#")) {
       event.preventDefault(); // デフォルトのジャンプを防ぐ
-      const targetId = href.replace("/#", "");
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => close(), 500); // スクロール後にメニューを閉じる
+      close(); // メニューを閉じる
+
+      if (window.location.pathname === "/") {
+        // **トップページなら直接スクロール**
+        scrollToAnchor(href);
+      } else {
+        // **別のページから `/#shop` をクリックした場合**
+        location.replace(href); // `/#shop` 付きでページ遷移
       }
     } else {
-      close(); // 別ページへ遷移するときも閉じる
+      close(); // 通常のページ遷移は即閉じる
     }
   }
 
-  // **Svelteのナビゲーションが開始されたらメニューを閉じる**
+  // **スムーズスクロールを適用**
+  function scrollToAnchor(href) {
+    const targetId = href.replace("/#", "");
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  // **ページロード時に `#shop` がある場合はスクロール**
   onMount(() => {
-    window.addEventListener("beforeunload", close);
+    if (window.location.hash) {
+      scrollToAnchor(window.location.hash);
+    }
+  });
+
+  // **ページの変更を監視してメニューを閉じる**
+  onMount(() => {
+    const observer = new MutationObserver(() => {
+      close();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    window.addEventListener("popstate", close);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("popstate", close);
+    };
   });
 </script>
 
