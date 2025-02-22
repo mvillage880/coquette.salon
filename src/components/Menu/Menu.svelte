@@ -8,6 +8,7 @@
     Transition,
   } from "@rgossiaux/svelte-headlessui";
   import clsx from "clsx";
+  import { onMount } from "svelte";
 
   let isOpen = false;
   const open = () => (isOpen = true);
@@ -24,7 +25,7 @@
     {
       mainLabel: "SHOP",
       subLabel: "店舗情報",
-      href: "/shop",
+      href: "/#shop",
       hiddenDesktop: true,
     },
     {
@@ -33,8 +34,8 @@
       href: "/news/1",
     },
     {
-      mainLabel: "GALLERY",
-      subLabel: "ギャラリー",
+      mainLabel: "HAIR STYLE",
+      subLabel: "ヘアスタイル",
       href: "/gallery",
     },
     /*{
@@ -52,7 +53,71 @@
       close();
     }
   });
+
+  // **ページ内リンク & 別ページ遷移に対応**
+  function handleLinkClick(event, href) {
+    if (href.startsWith("/#")) {
+      event.preventDefault(); // デフォルトのジャンプを防ぐ
+      const targetId = href.replace("/#", "");
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => close(), 500); // スクロール後にメニューを閉じる
+      }
+    } else {
+      close(); // 別ページへ遷移するときも閉じる
+    }
+  }
+
+  // **Svelteのナビゲーションが開始されたらメニューを閉じる**
+  onMount(() => {
+    window.addEventListener("beforeunload", close);
+  });
 </script>
+
+<!--Dialog
+  open={isOpen}
+  class={clsx(
+    "invisible fixed inset-0 z-40 overflow-y-auto bg-white opacity-0 transition-[opacity,visibility] duration-500 [&.open]:visible [&.open]:opacity-100",
+    isOpen && "open"
+  )}
+  static
+>
+  <nav class="h-full">
+    <--ul class="flex h-full flex-col justify-center gap-6 py-16"--
+    <ul class="flex h-full flex-col justify-center py-16">
+      {#each links as link}
+        <li
+          class="flex justify-center [&.hidden-desktop]:sm:hidden"
+          class:hidden-desktop={link.hiddenDesktop}
+        >
+          <a class="flex flex-col px-8 py-4 text-center" href={link.href}>
+            <span class="font-english text-2xl sm:text-3xl"
+              >{link.mainLabel}</span
+            >
+            <span class="font-sans text-base sm:text-lg">{link.subLabel}</span>
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </nav>
+</Dialog>
+
+<Portal>
+  <button
+    class="fixed right-10 top-10 z-50 flex h-10 w-10 flex-col items-center justify-center gap-4 text-secondary sm:right-14 sm:top-12 sm:h-14 sm:w-14"
+    on:click={toggle}
+  >
+    <span
+      class="absolute inset-0 m-auto h-px w-full -translate-y-2 transform-gpu bg-current duration-500 [&.open]:translate-y-0 [&.open]:rotate-45"
+      class:open={isOpen}
+    />
+    <span
+      class="absolute inset-0 m-auto h-px w-full translate-y-2 transform-gpu bg-current duration-500 [&.open]:translate-y-0 [&.open]:-rotate-45"
+      class:open={isOpen}
+    />
+  </button>
+</Portal-->
 
 <Dialog
   open={isOpen}
@@ -63,14 +128,17 @@
   static
 >
   <nav class="h-full">
-    <!--ul class="flex h-full flex-col justify-center gap-6 py-16"-->
     <ul class="flex h-full flex-col justify-center py-16">
       {#each links as link}
         <li
           class="flex justify-center [&.hidden-desktop]:sm:hidden"
           class:hidden-desktop={link.hiddenDesktop}
         >
-          <a class="flex flex-col px-8 py-4 text-center" href={link.href}>
+          <a
+            class="flex flex-col px-8 py-4 text-center"
+            href={link.href}
+            on:click={(event) => handleLinkClick(event, link.href)}
+          >
             <span class="font-english text-2xl sm:text-3xl"
               >{link.mainLabel}</span
             >

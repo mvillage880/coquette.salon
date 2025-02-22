@@ -12,6 +12,7 @@ import { client } from "@libs/microcms";
 import mainTextImage from "@images/top/main-text.svg";
 import aboutTextImage from "@images/top/about-text.svg";
 import servicesTextImage from "@images/top/services-text.svg";
+import shopTextImage from "@images/top/shop-text.svg";
 import newsTextImage from "@images/top/news-text.svg";
 
 const { contents: news } = await client.getList<News>({
@@ -34,7 +35,7 @@ const { contents: news } = await client.getList<News>({
       </h1>
     </div>
 
-    <div class="relative mt-8 w-5/6 sm:mt-0 sm:w-7/12 md:w-3/5 lg:w-2/3">
+    <div class="relative mt-8 w-11/12 sm:mt-0 sm:w-7/12 md:w-3/5 lg:w-2/3">
       <Picture
         src={import("@images/top/main.png")}
         widths={[800, 1200, 1600]}
@@ -139,11 +140,103 @@ const { contents: news } = await client.getList<News>({
   </section>
 
   <section
-    class="animate relative mt-20 bg-secondary/90 py-8 text-white sm:mt-64 md:mt-[22.5rem] lg:py-16"
+    id="shop"
+    class="relative mt-40 bg-secondary/90 sm:mr-10 sm:mt-28 md:mt-28 lg:mr-0 lg:mt-32 lg:flex xl:mr-0 xl:mt-40 2xl:mt-52"
+  >
+    <div class="animate sm:relative sm:z-10 lg:flex-1">
+      <TextImage
+        {...shopTextImage}
+        class="absolute left-10 top-1 ml-6 w-[12.5rem] origin-bottom-left -translate-y-full scale-75 drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] sm:ml-10 md:ml-14 md:scale-90 lg:ml-28 lg:scale-100 xl:ml-44"
+        alt=""
+      />
+      <!--h2
+        class="animate -mt-1.5 mr-10 flex flex-col items-start bg-secondary/90 py-8 pl-6 text-white sm:-mr-8 sm:-mt-2 sm:py-10 sm:pl-10 sm:pr-8 md:py-14 md:pl-14 lg:-mr-12 lg:py-16 lg:pl-28 lg:pr-12 xl:pl-44"
+      >
+        <span
+          class="font-english text-xl font-extrabold sm:text-2xl lg:text-3xl"
+          >About Us</span
+        >
+        <span>隠れ家プライベートサロン</span>
+      </h2-->
+      <div
+        class="animate py-8 pl-6 pr-10 sm:pb-0 sm:pl-10 sm:pr-6 sm:pt-6 md:pl-14 md:pr-10 lg:pl-28 lg:pr-16 lg:pt-12 xl:pl-44"
+      >
+        <dl
+          class="animate mb-5 mt-5 sm:mb-20 lg:mt-5 [&_dt:not(:first-child)]:mt-5 [&_dt]:text-lg [&_dt]:font-extrabold"
+        >
+          <div class="list">
+            <dt>住所:</dt>
+            <dd>
+              〒156-0052<br />東京都世田谷区経堂１-6-10
+              HISAWAビル202（小田急線経堂駅徒歩3分）<br />
+              <a
+                href="https://maps.app.goo.gl/DsRYEWp6McXJDe9n6"
+                class=""
+                target="_blank">→ google mapで見る</a
+              >
+            </dd>
+          </div>
+          <div class="list">
+            <dt>営業時間:</dt>
+            <dd>
+              平日: 10:00 - 17:00（カット最終受付16:00）<br />土日: 9:00 -
+              17:00（カット最終受付16:00）
+            </dd>
+          </div>
+          <div class="list">
+            <dt>定休日:</dt>
+            <dd>月曜日・火曜日</dd>
+          </div>
+          <div class="list">
+            <dt>アクセス:</dt>
+            <dd>
+              小田急線経堂駅南口を出て目の前の道なり（農大通り）をまっすぐお進みください。左手のスパイスワラを過ぎると郵便ポストがあり、その奥隣にある青色の建物の階段を登った２階です。
+            </dd>
+          </div>
+          <div class="list">
+            <dt>連絡先:</dt>
+            <dd>
+              Tel:
+              <a class="underline" href="tel:+03-3439-7778">03-3439-7778</a>
+              <!--br />Email:
+        <a class="underline" href="mailto:info@relaxcafe.sample.com">
+          info@relaxcafe.com
+        </a-->
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <div class="animate w-full pb-20 pl-6 sm:max-w-none sm:pl-14 lg:w-1/2">
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.14612450153!2d139.6363847!3d35.6487713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f396ea43b14f%3A0xdfa9c52d488a5f1e!2zQ29xdWV0dGUo44Kz44Kx44OD44OIKQ!5e0!3m2!1sja!2sjp!4v1739095859221!5m2!1sja!2sjp"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
+      <!--Picture
+        src={import("@images/top/about.png")}
+        widths={[480, 960, 1440]}
+        width={468}
+        height={651}
+        sizes="30rem"
+        alt=""
+      /-->
+    </div>
+  </section>
+
+  <section
+    class="animate relative mt-40 bg-secondary/90 py-8 text-white sm:mt-64 md:mt-[22.5rem] lg:py-16"
   >
     <TextImage
       {...newsTextImage}
-      class="absolute left-10 top-1 w-24 -translate-y-full drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] md:left-20 md:w-32 lg:left-40 lg:w-40"
+      class="absolute left-10 top-1 w-32 -translate-y-full drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] md:left-20 md:w-32 lg:left-40 lg:w-40"
       alt=""
     />
     <div class="pl-10 sm:flex sm:justify-between md:pl-20 lg:pl-40">

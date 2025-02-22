@@ -43,6 +43,7 @@ html {
   width: 100%;
   height: 0;
   padding-top: 75%; /* 比率を4:3に固定 */
+  filter: grayscale(1);
 }
 
 /* Google Mapのiframe */
@@ -60,7 +61,7 @@ html {
 }
 
 .bg-cta {
-  --tw-bg-opacity: 1;
+  --tw-bg-opacity: 0.9;
   background-color: rgb(32 102 89 / var(--tw-bg-opacity));
 }
 
@@ -91,4 +92,37 @@ html {
 /* .show クラスが付与されたらアニメーション適用 */
 .animate.show {
   animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* 画面サイズ767px以下に適用するスタイル */
+.list {
+  border-bottom: 1px solid #666;
+  opacity: 0.9;
+  padding: 0.5rem;
+}
+
+.list dt,
+.list dd {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* 画面サイズ768px以上に適用するスタイル */
+@media (min-width: 768px) {
+  .list {
+    display: flex;
+    /*align-items: center;*/
+  }
+  .list dt {
+    width: 100px;
+    padding: 5px;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  .list dd {
+    flex: 1;
+    padding: 5px;
+    color: #fff;
+    font-size: 0.9rem;
+  }
 }
