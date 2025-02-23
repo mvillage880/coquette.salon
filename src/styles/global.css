@@ -95,31 +95,31 @@ html {
 }
 
 /* 画面サイズ767px以下に適用するスタイル */
-.list {
+dl .list {
   border-bottom: 1px solid #666;
   opacity: 0.9;
   padding: 0.5rem;
 }
 
-.list dt,
-.list dd {
+dl .list dt,
+dl .list dd {
   color: #fff;
   font-size: 0.9rem;
 }
 
 /* 画面サイズ768px以上に適用するスタイル */
 @media (min-width: 768px) {
-  .list {
+  dl .list {
     display: flex;
     /*align-items: center;*/
   }
-  .list dt {
+  dl .list dt {
     width: 100px;
     padding: 5px;
     color: #fff;
     font-size: 0.9rem;
   }
-  .list dd {
+  dl .list dd {
     flex: 1;
     padding: 5px;
     color: #fff;

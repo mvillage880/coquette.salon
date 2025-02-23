@@ -33,6 +33,7 @@
     "preact": "10.13.2",
     "sswr": "^1.10.0",
     "svelte": "3.54.0",
+    "svelte-carousel": "^1.0.25",
     "tailwindcss": "3.3.1"
   },
   "devDependencies": {
