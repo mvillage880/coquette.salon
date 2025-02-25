@@ -58,11 +58,6 @@ const { contents: news } = await client.getList<News>({
         <div class="h-px w-6 bg-main sm:h-8 sm:w-px lg:h-12 xl:h-16"></div>
       </div>
     </div>
-    <div
-      class="absolute right-40 top-20 ml-6 w-36 origin-bottom-right rotate-45 scale-75 drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] sm:ml-10 sm:w-40 md:right-60 md:top-96 md:ml-14 md:scale-90 lg:ml-28 lg:scale-100 xl:ml-44"
-    >
-      <TextImage {...ill02TextImage} class="animate" alt="" />
-    </div>
   </div>
 
   <section
@@ -74,6 +69,13 @@ const { contents: news } = await client.getList<News>({
         class="ml-6 w-[12.5rem] origin-bottom-left scale-75 drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] sm:ml-10 md:ml-14 md:scale-90 lg:ml-28 lg:scale-100 xl:ml-44"
         alt=""
       />
+
+      <div
+        class="absolute right-24 top-0 z-20 ml-6 w-36 origin-top-right rotate-45 scale-75 drop-shadow-[0_0_24px_rgba(255,255,255,0.24)] sm:ml-10 sm:w-40 md:right-24 md:top-0 md:ml-14 md:scale-90 lg:ml-28 lg:scale-100 xl:ml-44"
+      >
+        <TextImage {...ill02TextImage} class="animate" alt="" />
+      </div>
+
       <h2
         class="animate -mt-1.5 mr-10 flex flex-col items-start bg-secondary/90 py-8 pl-6 text-white sm:-mr-8 sm:-mt-2 sm:py-10 sm:pl-10 sm:pr-8 md:py-14 md:pl-14 lg:-mr-12 lg:py-16 lg:pl-28 lg:pr-12 xl:pl-44"
       >
