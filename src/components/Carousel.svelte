@@ -13,6 +13,10 @@
   let isTransitioning = false;
   let interval;
 
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 50; // スワイプを判定する閾値(px)
+
   // ✅ microCMSから画像を取得
   async function fetchImages() {
     try {
@@ -95,6 +99,29 @@
     startAutoSlide();
   }
 
+  // ✅ スワイプ開始
+  function handleTouchStart(event: TouchEvent) {
+    touchStartX = event.touches[0].clientX;
+  }
+
+  // ✅ スワイプ終了
+  function handleTouchEnd(event: TouchEvent) {
+    touchEndX = event.changedTouches[0].clientX;
+    handleSwipe();
+  }
+
+  // ✅ スワイプの判定
+  function handleSwipe() {
+    const swipeDistance = touchStartX - touchEndX;
+    if (swipeDistance > swipeThreshold) {
+      // 左にスワイプ（次のスライド）
+      nextSlide();
+    } else if (swipeDistance < -swipeThreshold) {
+      // 右にスワイプ（前のスライド）
+      prevSlide();
+    }
+  }
+
   onMount(() => {
     fetchImages();
     updateItemsPerPage();
@@ -111,7 +138,11 @@
 {#if loading}
   <p class="text-center">画像を読み込み中...</p>
 {:else}
-  <div class="relative mx-auto max-w-6xl overflow-hidden">
+  <div
+    class="relative mx-auto max-w-6xl overflow-hidden"
+    on:touchstart={handleTouchStart}
+    on:touchend={handleTouchEnd}
+  >
     <div
       class="carousel flex transition-transform duration-500 ease-in-out"
       style="transform: translateX(calc(-{currentIndex} * (100% / var(--items-per-page))));"
