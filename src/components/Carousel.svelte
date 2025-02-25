@@ -121,7 +121,7 @@
           <img
             src={image.url}
             alt=""
-            class="h-auto w-full rounded-lg object-cover shadow-md"
+            class="h-auto w-full object-cover shadow-md"
           />
         </div>
       {/each}
@@ -146,7 +146,7 @@
 <style>
   .carousel {
     display: flex;
-    gap: 10px;
+    gap: 24px;
   }
 
   .carousel-item {
