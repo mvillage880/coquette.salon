@@ -98,6 +98,9 @@ const description = props.description ?? BASE_DESCRIPTION;
           .forEach((el) => observer.observe(el));
       });
     </script>
+    <script>
+      console.log("PUBLIC_SITE_URL:", import.meta.env.PUBLIC_SITE_URL);
+    </script>
    
   </body>
 </html>
