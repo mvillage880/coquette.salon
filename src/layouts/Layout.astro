@@ -35,26 +35,30 @@ const description = props.description ?? BASE_DESCRIPTION;
 
 <html lang="ja">
   <SEO
-    title={title}
-    description={description}
-    noindex={props.noindex ?? false}
-    charset="UTF-8"
-    openGraph={{
-      basic: {
-        title,
-        type: "website",
-        image: `${import.meta.env.PUBLIC_SITE_URL}/og.png`,
-      },
-    }}
-    extend={{
-      link: [{ rel: "icon", href: "/favicon.ico" }],
+  title={title}
+  description={description}
+  noindex={props.noindex ?? false}
+  charset="UTF-8"
+  openGraph={{
+    basic: {
+      title,
+      type: "website",
+      image: `${import.meta.env.PUBLIC_SITE_URL}/og.png`,
+      url: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`, // ✅ ここを追加！
+    },
+  }}
+  extend={{
+    link: [
+      { rel: "icon", href: "/favicon.ico" },
+      { rel: "canonical", href: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}` }, // ✅ 明示的に指定してもOK
+    ],
+    meta: [
+      { name: "viewport", content: "width=device-width" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }}
+/>
 
-      meta: [
-        { name: "viewport", content: "width=device-width" },
-        { name: "twitter:card", content: "summary_large_image" },
-      ],
-    }}
-  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -98,9 +102,7 @@ const description = props.description ?? BASE_DESCRIPTION;
           .forEach((el) => observer.observe(el));
       });
     </script>
-    <script>
-      console.log("PUBLIC_SITE_URL:", import.meta.env.PUBLIC_SITE_URL);
-    </script>
+ 
    
   </body>
 </html>
