@@ -44,15 +44,18 @@ const description = props.description ?? BASE_DESCRIPTION;
       title,
       type: "website",
       image: `${import.meta.env.PUBLIC_SITE_URL}/og.png`,
-      url: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`, // ✅ ここも引き続き必要
+      url: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`,
     },
   }}
   extend={{
     link: [
-      { rel: "icon", href: "/favicon.ico" },
       {
         rel: "canonical",
-        href: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`, // ✅ canonical 明示指定！
+        href: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`,
+      },
+      {
+        rel: "icon",
+        href: "/favicon.ico",
       },
     ],
     meta: [
@@ -61,6 +64,8 @@ const description = props.description ?? BASE_DESCRIPTION;
     ],
   }}
 />
+
+
 
 
 
