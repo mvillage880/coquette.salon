@@ -44,13 +44,16 @@ const description = props.description ?? BASE_DESCRIPTION;
       title,
       type: "website",
       image: `${import.meta.env.PUBLIC_SITE_URL}/og.png`,
-      url: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`, // ✅ ここを追加！
+      url: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`, // ✅ ここも引き続き必要
     },
   }}
   extend={{
     link: [
       { rel: "icon", href: "/favicon.ico" },
-      { rel: "canonical", href: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}` }, // ✅ 明示的に指定してもOK
+      {
+        rel: "canonical",
+        href: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`, // ✅ canonical 明示指定！
+      },
     ],
     meta: [
       { name: "viewport", content: "width=device-width" },
@@ -58,6 +61,7 @@ const description = props.description ?? BASE_DESCRIPTION;
     ],
   }}
 />
+
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
