@@ -39,24 +39,18 @@ const description = props.description ?? BASE_DESCRIPTION;
   description={description}
   noindex={props.noindex ?? false}
   charset="UTF-8"
+  canonical={import.meta.env.PUBLIC_SITE_URL}
   openGraph={{
     basic: {
       title,
       type: "website",
       image: `${import.meta.env.PUBLIC_SITE_URL}/og.png`,
-      url: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`,
+      url: import.meta.env.PUBLIC_SITE_URL, 
     },
   }}
   extend={{
     link: [
-      {
-        rel: "canonical",
-        href: `${import.meta.env.PUBLIC_SITE_URL}${Astro.url.pathname}`,
-      },
-      {
-        rel: "icon",
-        href: "/favicon.ico",
-      },
+      { rel: "icon", href: "/favicon.ico" },
     ],
     meta: [
       { name: "viewport", content: "width=device-width" },
@@ -64,6 +58,7 @@ const description = props.description ?? BASE_DESCRIPTION;
     ],
   }}
 />
+
 
 
 
