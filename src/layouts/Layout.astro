@@ -44,20 +44,24 @@ const description = props.description ?? BASE_DESCRIPTION;
     basic: {
       title,
       type: "website",
-      image: "/ogp.png",
-      url: import.meta.env.PUBLIC_SITE_URL, 
+      image: "/ogp.png", // ✅ public/ogp.png を相対パスで指定
+      url: import.meta.env.PUBLIC_SITE_URL,
     },
   }}
   extend={{
     link: [
-      { rel: "icon", href: "/favicon.ico" },
+      { rel: "icon", href: "/favicon.ico" },       // ✅ ファビコン
+      { rel: "canonical", href: import.meta.env.PUBLIC_SITE_URL }, // ✅ 明示的 canonical
     ],
     meta: [
       { name: "viewport", content: "width=device-width" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "/ogp.png" }, // ✅ OGP画像を meta にも追記
     ],
   }}
 />
+
+
 
 
 
