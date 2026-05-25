@@ -33,11 +33,6 @@
       subLabel: "お知らせ",
       href: "/news/1",
     },
-    {
-      mainLabel: "MENU",
-      subLabel: "メニュー",
-      href: "/menu",
-    },
     /*{
       mainLabel: "HAIR STYLE",
       subLabel: "ヘアスタイル",
