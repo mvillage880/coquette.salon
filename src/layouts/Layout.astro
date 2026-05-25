@@ -10,7 +10,6 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import GA4 from "@components/GA4.astro";
 
-
 /*
 import { scrollAnimation } from "../utils/scroll-animation";
 import { onMount } from "solid-js";
@@ -36,43 +35,36 @@ const description = props.description ?? BASE_DESCRIPTION;
 
 <html lang="ja">
   <SEO
-  title={title}
-  description={description}
-  noindex={props.noindex ?? false}
-  charset="UTF-8"
-  canonical={import.meta.env.PUBLIC_SITE_URL}
-  openGraph={{
-    basic: {
-      title,
-      type: "website",
-      image: "https://coquette-salon.vercel.app/ogp.png", 
-      url: import.meta.env.PUBLIC_SITE_URL,
-    },
-  }}
-  extend={{
-    link: [
-      { rel: "icon", href: "/favicon.ico" },       // ✅ ファビコン
-      { rel: "canonical", href: import.meta.env.PUBLIC_SITE_URL }, // ✅ 明示的 canonical
-    ],
-    meta: [
-      { name: "viewport", content: "width=device-width" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image", content: "/ogp.png" }, // ✅ OGP画像を meta にも追記
-    ],
-  }}
-/>
-
-
-
-
-
-
-
+    title={title}
+    description={description}
+    noindex={props.noindex ?? false}
+    charset="UTF-8"
+    canonical={import.meta.env.PUBLIC_SITE_URL}
+    openGraph={{
+      basic: {
+        title,
+        type: "website",
+        image: "https://coquette-salon.vercel.app/ogp.png",
+        url: import.meta.env.PUBLIC_SITE_URL,
+      },
+    }}
+    extend={{
+      link: [
+        { rel: "icon", href: "/favicon.ico" }, // ✅ ファビコン
+        { rel: "canonical", href: import.meta.env.PUBLIC_SITE_URL }, // ✅ 明示的 canonical
+      ],
+      meta: [
+        { name: "viewport", content: "width=device-width" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { property: "og:image", content: "/ogp.png" }, // ✅ OGP画像を meta にも追記
+      ],
+    }}
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;800&family=Shippori+Mincho:wght@500;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mulish:wght@500;800&family=Shippori+Mincho:wght@500;800&display=swap"
     rel="stylesheet"
   />
 
@@ -111,7 +103,5 @@ const description = props.description ?? BASE_DESCRIPTION;
           .forEach((el) => observer.observe(el));
       });
     </script>
- 
-   
   </body>
 </html>

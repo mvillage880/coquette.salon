@@ -34,13 +34,18 @@
       href: "/news/1",
     },
     {
+      mainLabel: "MENU",
+      subLabel: "メニュー",
+      href: "/menu",
+    },
+    /*{
       mainLabel: "HAIR STYLE",
       subLabel: "ヘアスタイル",
       href: "https://beauty.hotpepper.jp/slnH000357592/style/",
       target: "_blank",
       rel: "noopener noreferrer",
     },
-    /*{
+   {
       mainLabel: "CONTACT",
       subLabel: "お問い合わせ",
       href: "/contact",

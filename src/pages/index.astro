@@ -18,7 +18,21 @@ import ill01TextImage from "@images/top/ill01.svg";
 import ill02TextImage from "@images/top/ill02.svg";
 import ill03TextImage from "@images/top/ill03.svg";
 
-import Carousel from "@components/Carousel.svelte";
+import HairLoop from "@components/HairLoop.svelte";
+import ReviewCarousel from "@components/ReviewCarousel.svelte";
+
+import type { Gallery } from "src/types/microcms/gallery";
+
+const gallery = await client.getObject<Gallery>({
+  endpoint: "gallery",
+});
+
+const reviews = await client.getList({
+  endpoint: "reviews",
+  queries: {
+    limit: 6,
+  },
+});
 
 const { contents: news } = await client.getList<News>({
   endpoint: "news",
@@ -80,7 +94,7 @@ const { contents: news } = await client.getList<News>({
         class="animate -mt-1.5 mr-10 flex flex-col items-start bg-secondary/90 py-8 pl-6 text-white sm:-mr-8 sm:-mt-2 sm:py-10 sm:pl-10 sm:pr-8 md:py-14 md:pl-14 lg:-mr-12 lg:py-16 lg:pl-28 lg:pr-12 xl:pl-44"
       >
         <span
-          class="font-english text-xl font-extrabold sm:text-2xl lg:text-3xl"
+          class="lg:text-8xl mb-6 text-center font-english text-3xl leading-none tracking-[0.08em] sm:text-5xl"
           >CONCEPT</span
         >
         <span>一人ひとりの魅力を引き出す</span>
@@ -124,7 +138,7 @@ const { contents: news } = await client.getList<News>({
         class="animate md:pl- -mt-1.5 mr-10 flex flex-col items-start bg-secondary/90 py-8 pl-6 text-white sm:-ml-8 sm:-mt-2 sm:mr-0 sm:p-10 sm:pl-14 md:p-14 md:pl-[4.5rem] lg:-ml-12 lg:py-16 lg:pl-28 lg:pr-24 xl:pr-40"
       >
         <span
-          class="font-english text-xl font-extrabold sm:text-2xl lg:text-3xl"
+          class="lg:text-8xl mb-6 text-center font-english text-3xl leading-none tracking-[0.08em] sm:text-5xl"
           >MENU</span
         >
         <span>メニュー</span>
@@ -223,19 +237,43 @@ const { contents: news } = await client.getList<News>({
     </div>
   </section>
 
-  <section class="container mx-auto mt-10 p-4">
-    <h2 class="mb-6 text-center text-2xl font-bold lg:text-3xl">HAIR STYLE</h2>
+  <section class="mx-auto mt-20">
+    <h2
+      class="lg:text-8xl mb-6 text-center font-english text-3xl leading-none tracking-[0.08em] sm:text-5xl"
+    >
+      HAIR STYLE
+    </h2>
 
-    <Carousel client:only="svelte" />
+    <HairLoop client:load images={gallery.images} />
 
-    <div class="mt-10 flex justify-center sm:mt-16">
+    <!--div class="mt-10 flex justify-center sm:mt-16">
       <a
         href="https://beauty.hotpepper.jp/slnH000357592/style/"
         target="_blank"
         rel="noopener noreferrer"
         class="group relative flex h-12 w-64 items-center justify-center border border-current font-english text-sm shadow-black/60 transition-shadow duration-[0.4s] sm:hover:shadow-[8px_8px_0_var(--tw-shadow-color)] lg:h-16 lg:w-[22.5rem] lg:text-base"
-        >MORE</a
       >
+        MORE
+      </a>
+    </div-->
+  </section>
+
+  <section class="mx-auto mt-20">
+    <h2
+      class="lg:text-8xl mb-6 text-center font-english text-3xl leading-none tracking-[0.08em] sm:text-5xl"
+    >
+      CUSTOMER’S VOICE
+    </h2>
+
+    <ReviewCarousel client:load reviews={reviews.contents} />
+
+    <div class="mt-10 flex justify-center sm:mt-16">
+      <a
+        href="/reviews"
+        class="group relative flex h-12 w-64 items-center justify-center border border-current font-english text-sm shadow-black/60 transition-shadow duration-[0.4s] sm:hover:shadow-[8px_8px_0_var(--tw-shadow-color)] lg:h-16 lg:w-[22.5rem] lg:text-base"
+      >
+        MORE
+      </a>
     </div>
   </section>
 
@@ -358,7 +396,8 @@ const { contents: news } = await client.getList<News>({
     />
     <div class="pl-10 sm:flex sm:justify-between md:pl-20 lg:pl-40">
       <h2 class="mr-5 flex flex-none flex-col md:mr-10 lg:mr-20">
-        <span class="font-english text-xl font-extrabold lg:text-3xl"
+        <span
+          class="lg:text-8xl mb-6 text-center font-english text-3xl leading-none tracking-[0.08em] sm:text-5xl"
           >WHAT'S NEW</span
         >
         <span class="text-sm sm:text-base">新着情報</span>

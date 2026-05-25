@@ -10,6 +10,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.font-bebas {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.06em;
+}
+
 .font-serif {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,

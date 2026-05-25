@@ -1,0 +1,75 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { client } from "@libs/microcms";
+
+const limit = 10;
+
+type Review = {
+  id: string;
+  title?: string;
+  customerLabel: string;
+  message: string;
+};
+
+const reviews = await client.getList<Review>({
+  endpoint: "reviews",
+  queries: {
+    limit,
+    offset: 0,
+  },
+});
+
+const totalPages = Math.ceil(reviews.totalCount / limit);
+---
+
+<Layout title="お客様の声">
+  <section class="mx-auto max-w-5xl px-6 py-20 sm:py-28">
+    <h1
+      class="lg:text-8xl mb-6 text-center font-english text-3xl leading-none tracking-[0.04em] sm:text-5xl sm:tracking-[0.08em]"
+    >
+      CUSTOMER’S VOICE
+    </h1>
+
+    <div class="mt-14 grid gap-8">
+      {
+        reviews.contents.map((review) => (
+          <article class="border border-current bg-white px-6 py-8 sm:px-10 sm:py-10">
+            {review.title && (
+              <h2 class="font-serif text-xl font-bold leading-relaxed sm:text-2xl">
+                {review.title}
+              </h2>
+            )}
+
+            <p class="mt-6 leading-loose">{review.message}</p>
+
+            <p class="mt-6 text-right text-sm text-gray-500">
+              {review.customerLabel}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    {
+      totalPages > 1 && (
+        <nav class="mt-14 flex justify-center gap-3">
+          {Array.from({ length: totalPages }).map((_, i) => {
+            const page = i + 1;
+            const href = page === 1 ? "/reviews" : `/reviews/${page}`;
+
+            return (
+              <a
+                href={href}
+                class={`flex h-10 w-10 items-center justify-center border border-current font-english ${
+                  page === 1 ? "bg-main text-white" : ""
+                }`}
+              >
+                {page}
+              </a>
+            );
+          })}
+        </nav>
+      )
+    }
+  </section>
+</Layout>
