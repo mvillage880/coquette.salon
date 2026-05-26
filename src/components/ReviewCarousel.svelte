@@ -1,5 +1,5 @@
 <script lang="ts">
-  export type Review = {
+  type Review = {
     id?: string;
     title?: string;
     customerLabel: string;
@@ -8,50 +8,47 @@
 
   export let reviews: Review[] = [];
 
-  let currentIndex = 1;
-  let isResetting = false;
-
   $: displayReviews =
     reviews.length > 1
-      ? [reviews[reviews.length - 1], ...reviews, reviews[0]]
+      ? [reviews.at(-2)!, reviews.at(-1)!, ...reviews, reviews[0]!, reviews[1]!]
       : reviews;
+
+  let currentIndex = 2;
 
   function nextSlide() {
     if (reviews.length <= 1) return;
-
     currentIndex++;
-
-    if (currentIndex >= displayReviews.length - 1) {
-      setTimeout(() => {
-        isResetting = true;
-        currentIndex = 1;
-
-        requestAnimationFrame(() => {
-          isResetting = false;
-        });
-      }, 500);
-    }
   }
 
   function prevSlide() {
     if (reviews.length <= 1) return;
-
     currentIndex--;
-
-    if (currentIndex <= 0) {
-      setTimeout(() => {
-        isResetting = true;
-        currentIndex = reviews.length;
-
-        requestAnimationFrame(() => {
-          isResetting = false;
-        });
-      }, 500);
-    }
   }
 
   function goToSlide(index: number) {
-    currentIndex = index + 1;
+    currentIndex = index + 2;
+  }
+
+  let trackEl: HTMLDivElement;
+
+  function resetWithoutAnimation(index: number) {
+    trackEl.style.transition = "none";
+    currentIndex = index;
+
+    requestAnimationFrame(() => {
+      trackEl.offsetHeight; // 強制reflow
+      trackEl.style.transition = "transform 0.5s ease";
+    });
+  }
+
+  function handleTransitionEnd() {
+    if (currentIndex >= reviews.length + 2) {
+      resetWithoutAnimation(2);
+    }
+
+    if (currentIndex <= 1) {
+      resetWithoutAnimation(reviews.length + 1);
+    }
   }
 </script>
 
@@ -59,11 +56,12 @@
   <div class="review-carousel">
     <div class="review-carousel__viewport">
       <div
+        bind:this={trackEl}
         class="review-carousel__track"
-        class:is-resetting={isResetting}
+        on:transitionend={handleTransitionEnd}
         style="transform: translateX(calc(50% - ((var(--slide-width) + var(--slide-gap)) * {currentIndex} + (var(--slide-width) / 2))));"
       >
-        {#each reviews as review}
+        {#each displayReviews as review}
           <article class="review-carousel__item">
             {#if review.title}
               <h3 class="review-carousel__title">{review.title}</h3>
@@ -97,7 +95,7 @@
         {#each reviews as _, index}
           <button
             type="button"
-            class:active={index === currentIndex}
+            class:active={index === currentIndex - 2}
             aria-label={`${index + 1}件目の口コミへ`}
             on:click={() => goToSlide(index)}
           />
@@ -115,10 +113,6 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-  }
-
-  .review-carousel__track.is-resetting {
-    transition: none;
   }
 
   .review-carousel__viewport {
