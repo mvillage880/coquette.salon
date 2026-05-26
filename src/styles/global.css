@@ -10,6 +10,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 .font-bebas {
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 0.06em;
