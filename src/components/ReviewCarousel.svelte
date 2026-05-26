@@ -50,10 +50,43 @@
       resetWithoutAnimation(reviews.length + 1);
     }
   }
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  function handleTouchStart(event: TouchEvent) {
+    const touch = event.touches[0];
+
+    if (!touch) return;
+
+    touchStartX = touch.clientX;
+  }
+
+  function handleTouchEnd(event: TouchEvent) {
+    const touch = event.changedTouches[0];
+
+    if (!touch) return;
+
+    touchEndX = touch.clientX;
+
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) < 50) return;
+
+    if (diff > 0) {
+      nextSlide();
+    } else {
+      prevSlide();
+    }
+  }
 </script>
 
 {#if reviews.length > 0}
-  <div class="review-carousel">
+  <div
+    class="review-carousel"
+    on:touchstart={handleTouchStart}
+    on:touchend={handleTouchEnd}
+  >
     <div class="review-carousel__viewport">
       <div
         bind:this={trackEl}
@@ -113,6 +146,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    touch-action: pan-y;
   }
 
   .review-carousel__viewport {
@@ -163,8 +197,9 @@
     width: 44px;
     height: 44px;
     border: 1px solid currentColor;
-    background: #fff;
+    background: #282a26e6;
     transform: translateY(-50%);
+    color: #fff;
   }
 
   .review-carousel__arrow--prev {
@@ -199,7 +234,7 @@
       --slide-width: 82%;
       --slide-gap: 16px;
 
-      padding-bottom: 72px;
+      /*padding-bottom: 72px;*/
     }
 
     .review-carousel__item {
@@ -208,9 +243,10 @@
     }
 
     .review-carousel__arrow {
-      top: auto;
+      display: none;
+      /*top: auto;
       bottom: 18px;
-      transform: none;
+      transform: none;*/
     }
 
     .review-carousel__arrow--prev {
